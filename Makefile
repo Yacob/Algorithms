@@ -1,6 +1,6 @@
 #our makefile for doing stuff
 
-eecs477: main.cpp brute.h util.h
+eecs477: main.cpp brute.h pruning.h util.h
 	        g++ -pedantic -Wall -g -std=c++11 main.cpp -o eecs477
 
 run0: eecs477
