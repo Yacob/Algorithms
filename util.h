@@ -1,8 +1,10 @@
-
-
+#ifndef UTIL_H
+#define UTIL_H
 
 #include <iostream>
 #include <vector>
+
+using namespace std;
 
 void simple_print(vector< vector<unsigned int> > antennas){
 	for(unsigned int i = 0; i < antennas.size(); i++){
@@ -13,3 +15,5 @@ void simple_print(vector< vector<unsigned int> > antennas){
 		cout << endl;
 	}
 }
+
+#endif
