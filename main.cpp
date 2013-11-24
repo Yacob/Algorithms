@@ -33,9 +33,9 @@ int main(int argc, char *argv[]){
 	unsigned int base_station;
 	for(unsigned int i = 0; i < num_antennas; i++){
 		cin >> receiver_count;
-		antennas.resize(reciever_count);
+		antennas.resize(receiver_count);
 		for(unsigned int k = 0; k < receiver_count; k++){
-			cin >> base_station
+			cin >> base_station;
 			antennas[i][k] = base_station;
 		}
 	}
