@@ -5,6 +5,8 @@
 #include <sstream>
 #include <algorithm>
 #include "util.h"
+#include "brute.h"
+
 using namespace std;
 
 int main(int argc, char *argv[]){
@@ -38,5 +40,6 @@ int main(int argc, char *argv[]){
 		}
 	}
 	simple_print(antennas);
-
+	cout << "Doing brute force attempt" << endl;
+	bruteForce(antennas);	
 }
