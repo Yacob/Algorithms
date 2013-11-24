@@ -33,7 +33,7 @@ int main(int argc, char *argv[]){
 	unsigned int base_station;
 	for(unsigned int i = 0; i < num_antennas; i++){
 		cin >> receiver_count;
-		antennas.resize(receiver_count);
+		antennas[i].resize(receiver_count);
 		for(unsigned int k = 0; k < receiver_count; k++){
 			cin >> base_station;
 			antennas[i][k] = base_station;
@@ -41,5 +41,6 @@ int main(int argc, char *argv[]){
 	}
 	simple_print(antennas);
 	cout << "Doing brute force attempt" << endl;
-	bruteForce(antennas);	
+	string output = bruteForce(antennas);	
+	cout << output << endl;
 }

@@ -11,7 +11,8 @@ using namespace std;
 vector <vector <unsigned int> > gen_combs(unsigned int n){
 
         vector< vector<unsigned int> > subset;
-
+	vector<unsigned int> empty;
+	subset.push_back(empty);
         for (unsigned int i = 0; i < n; i++){
                 vector< vector<unsigned int> > subsetTemp = subset;
 
@@ -26,14 +27,15 @@ vector <vector <unsigned int> > gen_combs(unsigned int n){
 
 void simple_print(vector< vector<unsigned int> > antennas){
 	for(unsigned int i = 0; i < antennas.size(); i++){
-		cout << "for antenna " << i << " ";
+		cout << "for antenna " << i << ": ";
 		for(unsigned int k = 0; k < antennas[i].size(); k++){
 			cout << antennas[i][k] << " ";
 		}
 		cout << endl;
 	}
 }
-int evaluate(vector <unsigned int> combination,  
+
+unsigned int evaluate(vector <unsigned int> combination,  
 		vector <vector <unsigned int> > full){
 	set<int> usedBases;
         set<int> touchedBases;
@@ -50,7 +52,8 @@ int evaluate(vector <unsigned int> combination,
                         }
 		}
 	}
-	return 0;
+	unsigned int value = usedBases.size();
+	return value;
 }
 
 string formatResult(vector <unsigned int> comb, 
