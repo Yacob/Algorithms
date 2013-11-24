@@ -28,7 +28,7 @@ string bruteForce(vector <vector <unsigned int> > antennas){
 		}
 	}
 	
-	string out = formatResult(best_comb);
+	string out = formatResult(best_comb, antennas);
 	return out;
 }
 
