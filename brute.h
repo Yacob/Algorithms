@@ -7,10 +7,12 @@
 
 using namespace std;
 
-gen_combs(unsigned int n){
-	for(int i = 0; i < n; i++){
+vector <vector <unsigned int> > gen_combs(unsigned int n){
+	vector <vector <unsigned int> > combs;
+	for(unsigned int i = 0; i < n; i++){
 		
 	}
+	return combs;
 }
 
 
