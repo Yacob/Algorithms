@@ -27,7 +27,14 @@ int main(int argc, char *argv[]){
 			istream_iterator<unsigned int>(),
 			back_inserter< vector<unsigned int> >(antennas[i]));
 	}*/
-
+	unsigned int receiver_count;
+	unsigned int base_station;
+	for(unsigned int i = 0; i < num_antennas; i++){
+		cin >> receiver_count;
+		antennas.resize(reciever_count);
+		for(unsigned int k = 0; k < receiver_count; k++){
+			cin >> base_station
+			
 	simple_print(antennas);
 
 }
