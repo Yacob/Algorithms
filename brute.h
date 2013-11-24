@@ -3,6 +3,7 @@
 
 #include <vector>
 #include <algorithm>
+#include <util.h>
 
 using namespace std;
 
@@ -26,23 +27,7 @@ string bruteForce(vector <vector <unsigned int> > antennas){
 			best_comb = comb;
 		}
 	}
-	set usedBases;
-	set touchedBases;
-	stringsteam out;
-	stringsteam bases;
-	ss << best_comb.size() << ' ';
-	for(auto ant: best_comb){
-		ss << ant << ' ';
-		baseSet = antennas[ant];
-		for(auto base : baseSet){
-			if(touchedBases.find(base) != toucedBases.end()){
-				usedBases.add(base);
-			}
-			else if (usedBases.find(base) != usedBases.end()){
-				usedBases.erase(base);
-			}
-		}
-	}
-	ss << '\n' <<< usedBases.size()
-	return '';
+	
+	string out = formatResult(best_comb);
+	return out;
 }

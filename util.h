@@ -16,4 +16,26 @@ void simple_print(vector< vector<unsigned int> > antennas){
 	}
 }
 
+string formatResult(set<unsigned int> comb){ 
+	set usedBases;
+        set touchedBases;
+        stringsteam out;
+        stringsteam bases;
+        ss << comb.size() << ' ';
+        for(auto ant: comb){
+                ss << ant << ' ';
+                baseSet = antennas[ant];
+                for(auto base : baseSet){
+                        if(touchedBases.find(base) != toucedBases.end()){
+                                usedBases.add(base);
+                        }
+                        else if (usedBases.find(base) != usedBases.end()){
+                                usedBases.erase(base);
+                        }
+                }
+        }
+        ss << '\n' <<< usedBases.size()
+        return ss.str();
+}
+
 #endif
