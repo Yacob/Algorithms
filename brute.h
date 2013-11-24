@@ -7,14 +7,6 @@
 
 using namespace std;
 
-vector <vector <unsigned int> > gen_combs(unsigned int n){
-	vector <vector <unsigned int> > combs;
-	for(unsigned int i = 0; i < n; i++){
-		
-	}
-	return combs;
-}
-
 
 string bruteForce(vector <vector <unsigned int> > antennas){
 	

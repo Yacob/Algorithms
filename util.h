@@ -7,6 +7,23 @@
 #include <sstream>
 using namespace std;
 
+
+vector <vector <unsigned int> > gen_combs(unsigned int n){
+
+        vector< vector<unsigned int> > subset;
+
+        for (unsigned int i = 0; i < n; i++){
+                vector< vector<unsigned int> > subsetTemp = subset;
+
+                for (unsigned int j = 0; j < subsetTemp.size(); j++)
+                        subsetTemp[j].push_back(i);
+
+                for (unsigned int j = 0; j < subsetTemp.size(); j++)
+                        subset.push_back( subsetTemp[j] );
+        }
+        return subset;
+}
+
 void simple_print(vector< vector<unsigned int> > antennas){
 	for(unsigned int i = 0; i < antennas.size(); i++){
 		cout << "for antenna " << i << " ";
