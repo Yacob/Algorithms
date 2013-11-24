@@ -3,7 +3,8 @@
 
 #include <iostream>
 #include <vector>
-
+#include <set>
+#include <sstream>
 using namespace std;
 
 void simple_print(vector< vector<unsigned int> > antennas){
@@ -16,26 +17,27 @@ void simple_print(vector< vector<unsigned int> > antennas){
 	}
 }
 
-string formatResult(set<unsigned int> comb){ 
-	set usedBases;
-        set touchedBases;
-        stringsteam out;
-        stringsteam bases;
-        ss << comb.size() << ' ';
+string formatResult(set<unsigned int> comb, 
+			vector <vector <unsigned int> >antennas){ 
+	set<int> usedBases;
+        set<int> touchedBases;
+        stringstream out;
+        stringstream bases;
+        out << comb.size() << ' ';
         for(auto ant: comb){
-                ss << ant << ' ';
-                baseSet = antennas[ant];
+                out << ant << ' ';
+                auto baseSet = antennas[ant];
                 for(auto base : baseSet){
-                        if(touchedBases.find(base) != toucedBases.end()){
-                                usedBases.add(base);
+                        if(touchedBases.find(base) != touchedBases.end()){
+                                usedBases.insert(base);
                         }
                         else if (usedBases.find(base) != usedBases.end()){
                                 usedBases.erase(base);
                         }
                 }
         }
-        ss << '\n' <<< usedBases.size()
-        return ss.str();
+        out << '\n' << usedBases.size();
+        return out.str();
 }
 
 #endif
