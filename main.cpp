@@ -6,6 +6,8 @@
 #include <algorithm>
 #include "util.h"
 #include "brute.h"
+#include "pruning.h"
+
 
 using namespace std;
 
@@ -43,4 +45,10 @@ int main(int argc, char *argv[]){
 	cout << "Doing brute force attempt" << endl;
 	string output = bruteForce(antennas);	
 	cout << output << endl;
+	cout << "Doing pruning attempt" << endl;
+	vector<unsigned int> prune_output = prune(antennas);
+	cout << "Has size of " << prune_output.size() << " with antennas: ";
+	for(unsigned int i = 0; i < prune_output.size(); i++){
+		cout << prune_output[i] << " ";
+	}
 }
