@@ -56,6 +56,36 @@ unsigned int evaluate(vector <unsigned int> combination,
 	return value;
 }
 
+//Gets rid of all values that have a duplicate.  ALL VALUES, ie doesn't leave all but one.
+//[1, 2, 2, 3] -> [1, 3]
+vector<unsigned int> get_rid_of_dups(vector<unsigned int> antennas){
+	auto first = antennas.begin();
+	auto last = antennas.end();
+	auto second = antennas.begin();
+	vector<unsigned int> vec;
+	if(first == last){
+		return antennas;
+	}
+	while(first != last){
+		second = first;
+		second++;
+		if(*first != *second){
+			vec.push_back(*first);
+			first++;
+		}
+		else if(*first == *second){
+			while(second != last && *first == *second){
+				second++;
+			}
+			if(second == last){
+				break;
+			}
+			first = second;
+		}
+	}
+	return vec;
+}
+
 string formatResult(vector <unsigned int> comb, 
 			vector <vector <unsigned int> >antennas){ 
 	set<int> usedBases;

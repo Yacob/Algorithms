@@ -41,14 +41,19 @@ int main(int argc, char *argv[]){
 			antennas[i][k] = base_station;
 		}
 	}
-	simple_print(antennas);
+
+	//simple_print(antennas);
+	/*
 	cout << "Doing brute force attempt" << endl;
 	string output = bruteForce(antennas);	
 	cout << output << endl;
+	*/
 	cout << "Doing pruning attempt" << endl;
 	vector<unsigned int> prune_output = prune(antennas);
 	cout << "Has size of " << prune_output.size() << " with antennas: ";
 	for(unsigned int i = 0; i < prune_output.size(); i++){
 		cout << prune_output[i] << " ";
 	}
+	return 0;
 }
+

@@ -10,7 +10,8 @@ vector<unsigned int> prune(vector< vector<unsigned int> > antennas){
 	for(unsigned int i = 0; i < antennas.size(); i++){
 		sort(antennas[i].begin(), antennas[i].end());
 	}
-	for(unsigned int i = 0; i < antennas.size(); i++){
+	//CHANGE THIS FOR LOOP FOR BETTER RESULTS.  EACH SPOT IS THE STARTING ANTENNA.
+	for(unsigned int i = 0; i < 1; i++){
 		vector<bool> valid_sets (antennas.size(), true);
 		vector<unsigned int> cover_antennas;
 		valid_sets[i] = false;
@@ -20,10 +21,9 @@ vector<unsigned int> prune(vector< vector<unsigned int> > antennas){
 		sort(cover_antennas.begin(), cover_antennas.end());
 		unsigned int set_diff = 0;
 		unsigned int best_diff = 0;
-		unsigned int index_to_add = -1;
-		//Won't check all elements  )=  Need to loop this for loop until it doesn't find any
-		//positive value
+		int index_to_add = -1;
 		while(find(valid_sets.begin(), valid_sets.end(), true) != valid_sets.end()){
+			best_diff = cover_antennas.size();
 			for(unsigned int j = 0; j < antennas.size(); j++){
 				if(i == j || !valid_sets[j]) {
 					continue;
@@ -34,22 +34,26 @@ vector<unsigned int> prune(vector< vector<unsigned int> > antennas){
 					       	cover_antennas.end(),antennas[j].begin(),
 					       	antennas[j].end(), v.begin());
 				set_diff = (it - v.begin());
-				if(set_diff == 0){
+				if(set_diff <= cover_antennas.size()){
 					valid_sets[j] = false;
 				}
-				if(set_diff >= best_diff){
+				else if(set_diff > best_diff){
 					best_diff = set_diff;
 					index_to_add = j;
 				}
 			}
-			for(unsigned int j = 0; j < antennas[index_to_add].size(); j++){
-				cover_antennas.push_back(antennas[index_to_add][j]);
+			if(index_to_add != -1){
+				for(unsigned int j = 0; j < antennas[index_to_add].size(); j++){
+					cover_antennas.push_back(antennas[index_to_add][j]);
+				}
 				valid_sets[index_to_add] = false;
+				index_to_add = -1;
 			}
 			sort(cover_antennas.begin(), cover_antennas.end());
 		}
-		if(cover_antennas.size() >= output.size()){
-			output = cover_antennas;
+		auto temp = get_rid_of_dups(cover_antennas);
+		if(temp.size() >= output.size()){
+			output = temp;
 		}
 	}
 	return output;
