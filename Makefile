@@ -1,19 +1,11 @@
-#our makefile for doing stuff
+PATH := /usr/um/gcc-4.7.0/bin:$(PATH)
+LD_LIBRARY_PATH := /usr/um/gcc-4.7.0/lib64
+LD_RUN_PATH := /usr/um/gcc-4.7.0/lib64
 
-eecs477: main.cpp brute.h pruning.h util.h
-	        g++ -pedantic -Wall -g -std=c++11 main.cpp -o eecs477
+CXX = LD_LIBRARY_PATH=$(LD_LIBRARY_PATH) g++
 
-run0: eecs477
-	        ./eecs477 < test0.dat
-run1: eecs477
-		./eecs477 < test1.dat
-run2: eecs477
-		./eecs477 < test2.dat
-run3: eecs477
-		./eecs477 < test3.dat
-run4: eecs477
-		./eecs477 < test4.dat
-runSimple: eecs477
-		./eecs477 < simple.dat
+# compile cover by default
+cover: cover.cpp brute.h util.h pruning.h
+	$(CXX) -O3 -std=c++11 cover.cpp -o cover
 clean:
-	        rm eecs477
+	rm cover
