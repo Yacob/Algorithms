@@ -74,6 +74,6 @@ vector<unsigned int> prune(vector< vector<unsigned int> > antennas, unsigned int
 			returned_actual_antennas = actual_antennas;
 		}
 	}
-	return returned_actual_antennas;
+	return output;
 }
 #endif

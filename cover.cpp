@@ -48,12 +48,12 @@ int main(int argc, char *argv[]){
 	string output = bruteForce(antennas);	
 	cout << output << endl;
 	*/
-	unsigned int heuristic = 2;
+	unsigned int heuristic = 1;
 	if(num_antennas < num_receivers){
 		heuristic += (unsigned int)(num_receivers / num_antennas);
 	}
 	cout << "Doing pruning attempt" << endl;
-	vector<unsigned int> prune_output = prune(antennas, 0);
+	vector<unsigned int> prune_output = prune(antennas, heuristic);
 	cout << "Has size of " << prune_output.size() << " with antennas: ";
 	for(unsigned int i = 0; i < prune_output.size(); i++){
 		cout << prune_output[i] << " ";
