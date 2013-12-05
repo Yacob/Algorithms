@@ -54,10 +54,13 @@ int main(int argc, char *argv[]){
 	}
 	cout << "Doing pruning attempt" << endl;
 	vector<unsigned int> prune_output = prune(antennas, heuristic);
-	cout << "Has size of " << prune_output.size() << " with antennas: ";
+	//cout << "Has size of " << prune_output.size() << " with antennas: ";
+	cout << prune_output.size() << " ";
 	for(unsigned int i = 0; i < prune_output.size(); i++){
 		cout << prune_output[i] << " ";
 	}
+	cout << "\n";
+	cout << evaluate(prune_output,antennas); 	
 	return 0;
 }
 

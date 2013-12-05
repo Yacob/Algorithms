@@ -11,7 +11,7 @@ vector<unsigned int> prune(vector< vector<unsigned int> > antennas, unsigned int
 		sort(antennas[i].begin(), antennas[i].end());
 	}
 	//CHANGE THIS FOR LOOP FOR BETTER RESULTS.  EACH SPOT IS THE STARTING ANTENNA.
-	//Not reasonable for test0.dat
+	//Not reasonable for test0.dat //maybe
 	//also heads up the vector cover_antennas is full of base stations covered by antennas.
 	vector<unsigned int> returned_actual_antennas; //cause I really hate the world
 	for(unsigned int i = 0; i < antennas.size(); i = i + (unsigned int)(antennas.size() / 50)){
@@ -21,7 +21,7 @@ vector<unsigned int> prune(vector< vector<unsigned int> > antennas, unsigned int
 			cout << "skipped a bitch " << i << endl;
 			continue;
 		}*/
-		cout << heuristic << endl;
+		//cout << heuristic << endl;
 		vector<unsigned int> actual_antennas; //for lack of better name.  Fuck readibility.
 		vector<bool> valid_sets (antennas.size(), true);
 		vector<unsigned int> cover_antennas;
