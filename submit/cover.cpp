@@ -52,7 +52,6 @@ int main(int argc, char *argv[]){
 	if(num_antennas < num_receivers){
 		heuristic += (unsigned int)(num_receivers / num_antennas);
 	}
-	cout << "Doing pruning attempt" << endl;
 	vector<unsigned int> prune_output = prune(antennas, heuristic);
 	//cout << "Has size of " << prune_output.size() << " with antennas: ";
 	cout << prune_output.size() << " ";

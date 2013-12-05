@@ -14,7 +14,7 @@ vector<unsigned int> prune(vector< vector<unsigned int> > antennas, unsigned int
 	//Not reasonable for test0.dat //maybe
 	//also heads up the vector cover_antennas is full of base stations covered by antennas.
 	vector<unsigned int> returned_actual_antennas; //cause I really hate the world
-	for(unsigned int i = 0; i < antennas.size(); i = i + (unsigned int)(antennas.size() / 50)){
+	for(unsigned int i = 0; i < antennas.size(); i = i + (unsigned int)(antennas.size() / 51)){
 		//consider getting rid of this next part
 		/*auto skip = find(returned_actual_antennas.begin(), returned_actual_antennas.end(), i);
 		if(skip != returned_actual_antennas.end()){
