@@ -7,7 +7,7 @@
 #include "util.h"
 #include "brute.h"
 #include "pruning.h"
-
+#include "cluster.h"
 
 using namespace std;
 
@@ -52,9 +52,9 @@ int main(int argc, char *argv[]){
 	if(num_antennas < num_receivers){
 		heuristic += (unsigned int)(num_receivers / num_antennas);
 	}
-	vector<unsigned int> prune_output = prune(antennas, heuristic);
-	//cout << "Has size of " << prune_output.size() << " with antennas: ";
-	cout << prune_output.size() << " ";
+	//vector<unsigned int> prune_output = prune(antennas, heuristic);
+	auto prune_output = cluster(antennas);
+	cout << "Has size of " << prune_output.size() << " with antennas: ";
 	for(unsigned int i = 0; i < prune_output.size(); i++){
 		cout << prune_output[i] << " ";
 	}
