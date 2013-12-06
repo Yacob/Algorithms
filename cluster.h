@@ -7,7 +7,7 @@
 #include <iostream>
 
 vector<unsigned int> cluster(vector< vector<unsigned int> > antennas){
-	const unsigned int CLUSTER_SIZE = 10;
+	const unsigned int CLUSTER_SIZE = 6;
 	for(unsigned int i = 0; i < antennas.size(); i++){
 		sort(antennas[i].begin(), antennas[i].end());
 	}
@@ -30,7 +30,29 @@ vector<unsigned int> cluster(vector< vector<unsigned int> > antennas){
 	
 	
 	
-	//Greedy solution for each group of 10
+	for(unsigned int i = 0; i < clusters.size(); i++){
+		auto vec = bruteForce(clusters[i]);
+		vector<unsigned int> bruteRes;        
+		for(int j = 0; j < vec.size(); j++){
+			bruteRes.push_back(i*CLUSTER_SIZE + vec[j]);
+		}
+		vector<unsigned int> bases;
+		for(auto ant : bruteRes){
+			vector<unsigned int> hold;
+			hold.resize(bases.size() + antennas[ant].size());
+			auto it = set_symmetric_difference(antennas[ant].begin(), antennas[ant].end(), 
+					bases.begin(), bases.end(), hold.begin());
+			bases.assign(hold.begin(), it);
+		}
+		broken_clusters.push_back(bases);
+		final_antennas.push_back(bruteRes);
+	}
+	
+	
+	//greedy solution for each group of 10
+	
+	/*
+
 	for(unsigned int i = 0; i < clusters.size(); i++){
 		vector<unsigned int> best_estimate_base_stations;
 		vector<unsigned int> best_estimate_antennas;
@@ -92,16 +114,8 @@ vector<unsigned int> cluster(vector< vector<unsigned int> > antennas){
 		final_antennas.push_back(best_estimate_antennas);
 	}
 	
-
-
-	/*
-	for(unsigned int i = 0; i < final_antennas.size(); i++){
-		for(unsigned int j = 0; j < final_antennas[i].size(); j++){
-:x
-		}
-		cout << endl;
-	}
 	*/
+
 	for(auto vec : broken_clusters){
 		sort(vec.begin(), vec.end());
 	}
