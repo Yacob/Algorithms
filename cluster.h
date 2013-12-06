@@ -7,7 +7,7 @@
 #include <iostream>
 
 vector<unsigned int> cluster(vector< vector<unsigned int> > antennas){
-	const unsigned int CLUSTER_SIZE = 10;
+	const unsigned int CLUSTER_SIZE = 5;
 	for(unsigned int i = 0; i < antennas.size(); i++){
 		sort(antennas[i].begin(), antennas[i].end());
 	}
@@ -27,6 +27,22 @@ vector<unsigned int> cluster(vector< vector<unsigned int> > antennas){
 
 	//holds all greedy solutions to each cluster of 10 antennas
 	deque < vector<unsigned int> > broken_clusters;
+
+	cout << "starting brute force of size " << CLUSTER_SIZE << endl;
+	//Brute force on size of 5	
+	for(unsigned int i = 0; i < clusters.size(); i++){
+		auto vec = bruteForce(clusters[i]);
+		for(auto elem : clusters[i]){
+			for(auto el : elem){
+				cout << el << " ";
+			}
+			cout << endl;
+		}
+		cout << "cluster end" << endl;
+		broken_clusters.push_back(vec);
+	}
+	cout << "finished!" << endl;
+	/*
 	//Greedy solution for each group of 10
 	for(unsigned int i = 0; i < clusters.size(); i++){
 		vector<unsigned int> best_estimate_base_stations;
@@ -88,6 +104,9 @@ vector<unsigned int> cluster(vector< vector<unsigned int> > antennas){
 		broken_clusters.push_back(best_estimate_base_stations);
 		final_antennas.push_back(best_estimate_antennas);
 	}
+	*/
+
+
 	/*
 	for(unsigned int i = 0; i < final_antennas.size(); i++){
 		for(unsigned int j = 0; j < final_antennas[i].size(); j++){

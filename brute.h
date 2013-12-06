@@ -8,7 +8,8 @@
 using namespace std;
 
 
-string bruteForce(vector <vector <unsigned int> > antennas){
+
+vector<unsigned int> bruteForce(vector <vector <unsigned int> > antennas){
 	
 	vector< vector<unsigned int> > combs =  gen_combs(antennas.size());
 	vector <unsigned int> best_comb;
@@ -20,8 +21,8 @@ string bruteForce(vector <vector <unsigned int> > antennas){
 			best_comb = comb;
 		}
 	}
-	string out = formatResult(best_comb, antennas);
-	return out;
+	//string out = formatResult(best_comb, antennas);
+	return best_comb;
 }
 
 #endif
