@@ -7,7 +7,7 @@
 #include <iostream>
 
 vector<unsigned int> cluster(vector< vector<unsigned int> > antennas){
-	const unsigned int CLUSTER_SIZE = 10;
+	const unsigned int CLUSTER_SIZE = 5;
 	for(unsigned int i = 0; i < antennas.size(); i++){
 		sort(antennas[i].begin(), antennas[i].end());
 	}
@@ -27,8 +27,24 @@ vector<unsigned int> cluster(vector< vector<unsigned int> > antennas){
 
 	//holds all greedy solutions to each cluster of 10 antennas
 	deque < vector<unsigned int> > broken_clusters;
-	
-	
+	/*
+	cout << "starting brute force of size " << CLUSTER_SIZE << endl;
+	//Brute force on size of 5	
+	for(unsigned int i = 0; i < clusters.size(); i++){
+		auto vec = bruteForce(clusters[i]);
+		for(auto elem : clusters[i]){
+			for(auto el : elem){
+				cout << el << " ";
+			}
+			cout << endl;
+		}
+		cout << "cluster end" << endl;
+		broken_clusters.push_back(vec);
+	}
+
+	cout << "finished!" << endl;
+	*/
+
 	
 	//Greedy solution for each group of 10
 	for(unsigned int i = 0; i < clusters.size(); i++){
@@ -84,7 +100,7 @@ vector<unsigned int> cluster(vector< vector<unsigned int> > antennas){
 			}
 			auto temp = get_rid_of_dups(estimate_base_stations);
 			if(temp.size() > best_estimate_base_stations.size()){
-				best_estimate_base_stations = estimate_base_stations;
+				best_estimate_base_stations = temp;
 				best_estimate_antennas = estimate_antennas;
 			}
 		}
@@ -97,7 +113,7 @@ vector<unsigned int> cluster(vector< vector<unsigned int> > antennas){
 	/*
 	for(unsigned int i = 0; i < final_antennas.size(); i++){
 		for(unsigned int j = 0; j < final_antennas[i].size(); j++){
-:x
+			cout << final_antennas[i][j] << " ";
 		}
 		cout << endl;
 	}
@@ -114,18 +130,15 @@ vector<unsigned int> cluster(vector< vector<unsigned int> > antennas){
 				v.begin());
 		unsigned int cluster_diff = (it - v.begin());
 		if(cluster_diff > broken_clusters[0].size() && cluster_diff > broken_clusters[1].size()){
-			
-			vector<unsigned int>::iterator it;
-			
-			vector<unsigned int> base(broken_clusters[0].size() + broken_clusters[1].size());
-			it = set_union(broken_clusters[0].begin(), broken_clusters[0].end(), broken_clusters[1].begin(), broken_clusters[1].end(), base.begin());
-			base.resize(it - base.begin());
-
-			broken_clusters.push_back(base);
+			v.resize(it - v.begin());
+			broken_clusters.push_back(v);
 			broken_clusters.pop_front();
 			broken_clusters.pop_front();
 
 			vector<unsigned int> ant(final_antennas[0].size() + final_antennas[1].size());
+			vector<unsigned int>::iterator it;
+			//ant.insert(ant.end(), final_antennas[0].begin(), final_antennas[0].end());
+			//ant.insert(ant.end(), final_antennas[1].begin(), final_antennas[1].end());
 			it = set_union(final_antennas[0].begin(), final_antennas[0].end(), final_antennas[1].begin(), final_antennas[1].end(), ant.begin());
 			ant.resize(it - ant.begin());
 
