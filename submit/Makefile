@@ -5,5 +5,5 @@ LD_RUN_PATH := /usr/um/rhel_6/gcc-4.7.0/lib64:/usr/um/rhel_6/mpc-0.9/lib/:/usr/u
 CXX = LD_LIBRARY_PATH=$(LD_LIBRARY_PATH) g++
 
 # compile cover by default
-cover: cover.cpp
+cover: cover.cpp cluster.h brute.h util.h
 	$(CXX) -O3 -std=c++11 cover.cpp -o cover
