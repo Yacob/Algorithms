@@ -27,21 +27,26 @@ vector<unsigned int> cluster(vector< vector<unsigned int> > antennas){
 
 	//holds all greedy solutions to each cluster of 10 antennas
 	deque < vector<unsigned int> > broken_clusters;
-
-	cout << "starting brute force of size " << CLUSTER_SIZE << endl;
 	//Brute force on size of 5	
 	for(unsigned int i = 0; i < clusters.size(); i++){
 		auto vec = bruteForce(clusters[i]);
-		for(auto elem : clusters[i]){
-			for(auto el : elem){
-				cout << el << " ";
-			}
-			cout << endl;
+		vector<unsigned int> bruteRes;	
+		for(int j = 0; j < vec.size(); j++){
+			bruteRes.push_back(i*CLUSTER_SIZE + vec[j]);
 		}
-		cout << "cluster end" << endl;
-		broken_clusters.push_back(vec);
+		
+		vector<unsigned int> bases;
+		for(auto ant : bruteRes){
+			vector<unsigned int> hold;
+			hold.resize(bases.size() + antennas[ant].size());
+			auto it = set_symmetric_difference(antennas[ant].begin(), antennas[ant].end(),
+						      bases.begin(), bases.end(),
+						      hold.begin());
+			bases.assign(hold.begin(), it);
+		}
+		broken_clusters.push_back(bases);
+		final_antennas.push_back(bruteRes);
 	}
-	cout << "finished!" << endl;
 	/*
 	//Greedy solution for each group of 10
 	for(unsigned int i = 0; i < clusters.size(); i++){
@@ -110,7 +115,7 @@ vector<unsigned int> cluster(vector< vector<unsigned int> > antennas){
 	/*
 	for(unsigned int i = 0; i < final_antennas.size(); i++){
 		for(unsigned int j = 0; j < final_antennas[i].size(); j++){
-			cout << final_antennas[i][j] << " ";
+:x
 		}
 		cout << endl;
 	}
